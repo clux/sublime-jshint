@@ -1,39 +1,21 @@
+var indent = function (len) {
+  var numIndents = 5 - len;
+  return new Array(numIndents + 1).join(' ');
+};
+
+var formatErrs = function (errs) {
+  var numErrs = errs.length + ' error' + (errs.length !== 1 ? 's' : '');
+  if (errs.length) {
+    var str = errs.map(function (result) {
+      var e = result.error;
+      var whitespace = indent((e.line + e.character.toString()).length);
+      return whitespace + ' ' + e.line + ',' + e.character + ':' + ' ' + e.reason;
+    }).join('\n');
+    return str + '\n\n✗ ' + numErrs + ', [F4] for next, [shift-F4] for previous.\n';
+  }
+  return '✓ ' + numErrs + ', [esc] to hide.\n';
+};
+
 exports.reporter = function (errors, results) {
-  var
-    buffer = '',
-    title = 'error';
-
-  function numberWang(wangaNumb) {
-    var
-      thatsNumberWang = 5 - wangaNumb,
-      stayNumberWang = '', i;
-
-    for (i = 0; i < thatsNumberWang; i += 1) {
-      stayNumberWang += ' ';
-    }
-
-    return stayNumberWang;
-  }
-
-  buffer += '[JSHint: ' + results[0].file + ']\n\n';
-
-  if (errors.length) {
-    if (errors.length > 1) {
-      title += 's';
-    }
-
-    errors.forEach(function (result) {
-      var
-        error = result.error;
-
-      buffer += numberWang((error.line + error.character.toString()).length) + ' ' + error.line + ',' + error.character + ':' + ' ' + error.reason + '\n';
-    });
-
-    buffer += '\n✗ ' + errors.length + ' ' + title + ', double-click above, [F4] for next, [shift-F4] for previous.\n';
-
-  } else {
-    buffer += '✓ 0 errors, [esc] to hide.\n';
-  }
-
-  console.log(buffer);
+  console.log('[JSHint: ' + results[0].file + ']\n\n' + formatErrs(errors));
 };
