@@ -1,32 +1,34 @@
 {
-  "asi": false,
-  "boss": false,
-  "camelcase": true,
-  "curly": true,
-  "eqeqeq": true,
-  "eqnull": false,
-  "es5": true,
-  "evil": false,
-  "expr": false,
-  "forin": true,
-  "funcscope": false,
-  "immed": true,
-  "indent": 2,
-  "latedef": true,
-  "loopfunc": false,
-  "maxerr": 7,
-  "newcap": true,
-  "node": true,
-  "nonew": true,
-  "plusplus": true,
-  "quotmark": "single",
-  "regexdash": false,
-  "shadow": false,
-  "strict": false,
-  "sub": false,
-  "supernew": false,
-  "trailing": true,
-  "undef": true,
-  "unused": true,
-  "white": true
+    // enforcing options
+    "indent"        : 2,     // force tab-width
+    "camelcase"     : true,  // force camelCase or UPPER_CASE var names only
+    "curly"         : true,  // force curly braces
+    "eqeqeq"        : true,  // force ===
+    "latedef"       : true,  // prevent use of vars before their defs
+    "immed"         : true,  // prevent function(){}() without wrapping in parens
+    "newcap"        : true,  // prevent uncapitalized constructors
+    "noarg"         : true,  // prevent arguments.callee and arguments.caller
+    "noempty"       : true,  // prevent empty code blocks
+    "plusplus"      : true,  // prevent ++ usage
+    "undef"         : true,  // prevent accessing undeclared vars
+    "unused"        : true,  // prevent having unused vars
+    "trailing"      : true,  // prevent trailing whitespace
+
+    // complexity
+    "maxparams"     : 5,     // max params per function
+    "maxdepth"      : 5,     // max levels of nesting
+    "maxstatements" : 50,    // max statements per fn
+    "maxcomplexity" : 11,    // max cyclomatic complexity
+    "maxlen"        : 85,    // max line length
+
+    // relaxing opts
+    "esnext"        : true,  // allow harmony syntax (const in partic.)
+    "eqnull"        : true,  // allow == null to check for undef or null
+    "laxcomma"      : true,  // allow comma-first style
+    "validthis"     : true,  // allow using this in non-constructor function
+
+    // legacy + misc
+    "node"          : true,  // we need commonjs 'globals'
+    "strict"        : false, // dont want "use strict" everywhere..
+    "white"         : false  // dont want awful crockford whitespace style
 }
